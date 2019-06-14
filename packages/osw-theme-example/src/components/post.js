@@ -8,11 +8,6 @@ const Post = ({ state, actions }) => {
   const data = state.source.get(state.router.link);
   // Get the the post.
   const post = state.source[data.type][data.id];
-  // Get the author.
-  const author = state.source.author[post.author];
-  // Get a date for humans.
-  const date = new Date(post.date);
-
   // Prefetch home posts and the list component.
   useEffect(() => {
     actions.source.fetch("/");
@@ -21,22 +16,7 @@ const Post = ({ state, actions }) => {
 
   return data.isReady ? (
     <Container>
-      <div>
-        <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-        {data.isPost && (
-          <>
-            <Link link={author.link}>
-              <Author>
-                By <b>{author.name}</b>
-              </Author>
-            </Link>
-            <Fecha>
-              {" "}
-              on <b>{date.toDateString()}</b>
-            </Fecha>
-          </>
-        )}
-      </div>
+      <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
       <Body
         dangerouslySetInnerHTML={{
           __html: post.content.rendered
@@ -59,18 +39,6 @@ const Title = styled.h1`
   margin-top: 24px;
   margin-bottom: 8px;
   color: rgba(12, 17, 43);
-`;
-
-const Author = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
-  display: inline;
-`;
-
-const Fecha = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
-  display: inline;
 `;
 
 const Body = styled.div`

@@ -2,30 +2,16 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Link from "../link";
 
-const Item = ({ state, item }) => {
-  const author = state.source.author[item.author];
-  const date = new Date(item.date);
+const Item = ({ item }) => (
+  <Container>
+    <Link link={item.link}>
+      <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
+    </Link>
+    <Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
+  </Container>
+);
 
-  return (
-    <Container>
-      <Link link={item.link}>
-        <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
-      </Link>
-      <Link link={author.link}>
-        <Author>
-          By <b>{author.name}</b>
-        </Author>
-      </Link>
-      <Fecha>
-        {" "}
-        on <b>{date.toDateString()}</b>
-      </Fecha>
-      <Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
-    </Container>
-  );
-};
-
-export default connect(Item);
+export default Item;
 
 const Container = styled.li`
   margin-bottom: 24px;
@@ -36,18 +22,6 @@ const Title = styled.h1`
   margin: 0;
   margin-top: 24px;
   margin-bottom: 8px;
-`;
-
-const Author = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
-  display: inline;
-`;
-
-const Fecha = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
-  display: inline;
 `;
 
 const Excerpt = styled.div`
