@@ -1,7 +1,6 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
-import Nav from "./nav";
 
 const Header = ({ state }) => (
   <>
@@ -11,7 +10,6 @@ const Header = ({ state }) => (
       </StyledLink>
       <Description>{state.frontity.description}</Description>
     </Container>
-    <Nav />
   </>
 );
 
