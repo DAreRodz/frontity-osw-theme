@@ -6,12 +6,7 @@ const marsTheme = {
     theme: Theme
   },
   state: {
-    theme: {
-      featured: {
-        showOnList: false,
-        showOnPost: false
-      }
-    }
+    theme: {}
   }
 };
 

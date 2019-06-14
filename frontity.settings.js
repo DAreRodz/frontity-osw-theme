@@ -12,12 +12,7 @@ const settings = {
     {
       name: "osw-theme-example",
       state: {
-        theme: {
-          featured: {
-            showOnList: false,
-            showOnPost: false
-          }
-        }
+        theme: {}
       }
     },
     {

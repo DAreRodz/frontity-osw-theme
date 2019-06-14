@@ -1,7 +1,6 @@
 import React from "react";
 import { connect, styled } from "frontity";
 import Link from "../link";
-import FeaturedMedia from "../featured-media";
 
 const Item = ({ state, item }) => {
   const author = state.source.author[item.author];
@@ -21,9 +20,6 @@ const Item = ({ state, item }) => {
         {" "}
         on <b>{date.toDateString()}</b>
       </Fecha>
-      {state.theme.featured.showOnList && (
-        <FeaturedMedia id={item.featured_media} />
-      )}
       <Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
     </Container>
   );
